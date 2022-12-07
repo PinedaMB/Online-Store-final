@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OperationController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,6 @@ Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProdu
 
 Route::get('sum/{a}&{b}', [OperationController::class, 'sum']);
 Route::get('tipo={tipo}({a}&{b})', [OperationController::class, 'operation']);
+Auth::routes();
+
+/* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
