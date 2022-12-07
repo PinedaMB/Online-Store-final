@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,20 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $productsModel = new Product();
-        $images = ['game.png', 'safe.png', 'submarine.png'];
-        for ($i=0; $i < 5; $i++) {
-            $productsModel->create([
-                'name' => 'Product ' . $i,
-                'description' => 'Description ' . $i,
-                'price' => rand(1, 100),
-                'image' => $images[rand(0, 2)],
-            ]);
-        }
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $userModel = new User();
+        $data = [
+            'name' => 'Admin',
+            'email' => 'admin@localhost',
+            'password' => bcrypt('password'),
+            'balance' => 100000,
+            'role' => 'admin'
+        ];
+        $userModel->create($data);
     }
 }
