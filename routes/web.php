@@ -38,6 +38,11 @@ Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.ind
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name("cart.delete");
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
 
+Route::middleware('auth')->group(function () {
+    Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name("cart.purchase");
+    Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name("myaccount.orders");
+});
+
 //Route::post('publicacion/(publicacion)/editar/(id)')
 
 Route::get('sum/{a}&{b}', [OperationController::class, 'sum']);
